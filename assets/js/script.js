@@ -15,6 +15,7 @@ var text = $("#textarea")
 .text()
 .trim()
 
+$(document).ready(function () {
 
 //function to check the time of the event and compare to current time
 function checkTime(time, Id) { 
@@ -30,7 +31,35 @@ function checkTime(time, Id) {
 
 }
 
-$(document).ready(function () {
+function timeTracker() {
+    //get current number of hours.
+    var currentTime = moment().hour();
+
+    // loop over time blocks
+    $(".time-block").each(function () {
+        var checkTime = parseInt($(this).attr("id").split("hour")[1]);
+
+        // To check the time and add the classes for background indicators
+        if (checkTime < currentTime) {
+            $(this).removeClass("future");
+            $(this).removeClass("present");
+            $(this).addClass("past");
+        }
+        else if (checkTime === currentTime) {
+            $(this).removeClass("past");
+            $(this).removeClass("future");
+            $(this).addClass("present");
+        }
+        else {
+            $(this).removeClass("present");
+            $(this).removeClass("past");
+            $(this).addClass("future");
+
+        }       
+    })
+}
+
+
     // saveBtn click listener 
     $(".saveBtn").on("click", function () {
         // Get nearby values of the description in JQuery
@@ -50,4 +79,5 @@ $(document).ready(function () {
   $("#hour_5 .description").val(localStorage.getItem("hour_5"));
     })
     checkTime();
+    timeTracker();
 })
