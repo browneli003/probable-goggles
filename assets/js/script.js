@@ -39,5 +39,15 @@ $(document).ready(function () {
 
         // Save text in local storage
         localStorage.setItem(time, text);
+  $("#hour_9 .description").val(localStorage.getItem("hour_9"));
+  $("#hour_10 .description").val(localStorage.getItem("hour_10"));
+  $("#hour_11 .description").val(localStorage.getItem("hour_11"));
+  $("#hour_12 .description").val(localStorage.getItem("hour_12"));
+  $("#hour_1 .description").val(localStorage.getItem("hour_1"));
+  $("#hour_2 .description").val(localStorage.getItem("hour_2"));
+  $("#hour_3 .description").val(localStorage.getItem("hour_3"));
+  $("#hour_4 .description").val(localStorage.getItem("hour_4"));
+  $("#hour_5 .description").val(localStorage.getItem("hour_5"));
     })
+    checkTime();
 })
